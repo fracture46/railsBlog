@@ -1,0 +1,10 @@
+<h1><%= @post.titre %></h1>
+<h2>Rédigé par <%= @post.author() %> le <%= @post.date_publication.strftime('%d/%m/%Y') %> </h2>
+<%= link_to 'edit', [:edit, @post] %>
+<%= link_to 'delete', @post, method: :delete, data: {confirm: "Confirmer la suppression de ce post ?"} %>
+<%= image_tag @post.image.url %>
+<p style="font-style:italic"><%= @post.chapeau %></p>
+
+<p><%= @post.corps %></p>
+
+<%= link_to 'Back to list', [:posts] %>

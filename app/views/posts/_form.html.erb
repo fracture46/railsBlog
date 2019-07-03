@@ -1,0 +1,48 @@
+<%= form_for @post do |f| %>
+  <div class="row">
+    <div class="col-md-4">
+      Titre :
+      <%= f.text_field :titre %>
+    </div>
+    <div>
+      <% if @post.errors[:titre].present? %>
+        <div><%= @post.errors[:titre].to_sentence  %></div>
+      <% end%>
+    </div>
+    <div class="col-md-4">
+      Publishing date :
+      <%= f.date_field :date_publication %>
+    </div>
+    <div>
+      <% if @post.errors[:date_publication].present? %>
+        <div><%= @post.errors[:date_publication].to_sentence  %></div>
+      <% end%>
+    </div>
+    <div class="col-md-4">
+      Chapeau :
+      <%= f.text_area :chapeau %>
+    </div>
+    <div>
+      <% if @post.errors[:chapeau].present? %>
+        <div><%= @post.errors[:chapeau].to_sentence  %></div>
+      <% end%>
+    </div>
+    <div class="col-md-4">
+      Corps :
+      <%= f.text_area :corps %>
+    </div>
+     <div>
+      <% if @post.errors[:corps].present? %>
+        <div><%= @post.errors[:corps].to_sentence  %></div>
+      <% end%>
+    </div>
+    <div class="col-md-4">
+      Image :
+      <%= f.file_field :image %>
+    </div>
+    <div class="col-md-12">
+      <%= f.submit %>
+    </div>
+  </div>
+<% end %>
+<%= link_to 'Back to list', [:posts] %>

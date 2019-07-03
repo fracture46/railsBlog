@@ -1,0 +1,11 @@
+<h1>Here are details on user n°<%= @user.id %></h1>
+
+<%= link_to 'delete', @user, method: :delete, data: {confirm: "T'es sûr ?"} %>
+
+<p>First name : <%= @user.first_name %></p>
+<p>Last name : <%= @user.last_name %></p>
+<p>Email : <%= @user.email %></p>
+
+<%= link_to 'edit', [:edit, @user] %>
+
+<%= link_to 'Back to list', [:users] %>
