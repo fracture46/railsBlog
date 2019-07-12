@@ -1,10 +1,7 @@
 class UsersController < ApplicationController
     before_action :load_user, only: [:show, :edit, :update, :destroy]
     #before_action :authenticate_user!
-    
-    def index
-      @users = User.all.limit(20).order(:last_name)
-    end
+
     def new
       @user = User.new
     end
@@ -24,8 +21,8 @@ class UsersController < ApplicationController
       end
     end
     def destroy
-      @user.destroy
-      redirect_to :users
+      sign_out
+      redirect_to :posts
     end
     
     def user_attributes
