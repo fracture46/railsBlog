@@ -1,11 +1,28 @@
 <h1>Here are details on user n°<%= @user.id %></h1>
 
-<%= link_to 'delete', @user, method: :delete, data: {confirm: "T'es sûr ?"} %>
 
 <p>First name : <%= @user.first_name %></p>
 <p>Last name : <%= @user.last_name %></p>
 <p>Email : <%= @user.email %></p>
 
-<%= link_to 'edit', [:edit, @user] %>
+<% if @user.posts.count > 0%>
+<h3>There posts</h3>
+<ul>
+  <% @user.posts.each do |post| %>
+  <li>
+    <%= link_to [post] do %>
+      <%= post.titre %>
+    <% end %>
+    Posté le <%= post.date_publication.strftime('%d/%m/%Y') %>
+    </li>
+  <% end %>
+</ul>
+<% end %>
 
-<%= link_to 'Back to list', [:users] %>
+<% if current_user == @user %>
+  <%= link_to 'edit', [:edit, @user] %>
+  <%= link_to 'delete', @user, method: :delete, data: {confirm: "T'es sûr ?"} %>
+  <br/>
+<% end %>
+
+<%= link_to 'Back to list', [:posts] %>

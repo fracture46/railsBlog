@@ -1,6 +1,8 @@
 <h1>Post List</h1>
 
-<%= link_to 'new post', [:new, :post] %>
+<% if current_user != nil %>
+  <%= link_to 'new post', [:new, :post] %>
+<% end %>
 
 <ul>
   <% @posts.each do |post| %>

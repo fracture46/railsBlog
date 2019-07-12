@@ -1,5 +1,5 @@
 <h1><%= @post.titre %></h1>
-<h2>Rédigé par <%= @post.author() %> le <%= @post.date_publication.strftime('%d/%m/%Y') %> </h2>
+<h2>Rédigé par <%= link_to  @post.author(), [@post.user] %> le <%= @post.date_publication.strftime('%d/%m/%Y') %> </h2>
 <% if current_user == @post.user %>
   <div>
     <%= link_to 'edit', [:edit, @post] %>
