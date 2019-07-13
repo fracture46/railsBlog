@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
   
   has_many :posts, dependent: :destroy
+  has_many :comments
   
   def full_name
     "#{first_name.capitalize} #{last_name.upcase}"

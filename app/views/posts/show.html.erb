@@ -11,4 +11,24 @@
 
 <p><%= @post.corps %></p>
 
+<% if current_user != nil %>
+  <h2>New Comment</h2>
+  Logged user : <%= current_user.full_name()%>
+  <%= render partial: '/comments/form', locals: {comment: current_user.comments.build} %>
+<% end %>
+
+<h2>Comments</h2>
+<ul>
+  <% @post.comments.each do |comment| %>
+  <li>
+    <%= link_to [comment.user] do %>
+      <%= comment.author() %>
+    <% end %>
+    le <%= comment.posted_at.strftime('%d/%m/%Y') %>
+    <br/>
+    <i><%= comment.content %></i>
+    </li>
+  <% end %>
+</ul>
+
 <%= link_to 'Back to list', [:posts] %>

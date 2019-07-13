@@ -6,6 +6,7 @@ class Post < ActiveRecord::Base
   validates :date_publication, presence: true
 
   belongs_to :user
+  has_many :comments
   mount_uploader :image, ImageUploader
 
   def author

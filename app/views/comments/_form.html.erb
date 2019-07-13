@@ -1,0 +1,18 @@
+<%= form_for comment do |f| %>
+  <div class="row">
+    <div class="col-md-4">
+      Content :
+      <%= f.text_area :content %>
+    </div>
+    <div>
+      <% if comment.errors[:content].present? %>
+        <div><%= comment.errors[:content].to_sentence  %></div>
+      <% end%>
+    </div>
+    <%= f.hidden_field :post_id, value: "#{params[:id]}" %>
+    <%= f.hidden_field :posted_at, value: "#{Time.now}" %>
+    <div class="col-md-12">
+      <%= f.submit %>
+    </div>
+  </div>
+<% end %>
