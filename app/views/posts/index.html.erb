@@ -13,7 +13,7 @@
         <%= post.titre %>
       <% end %>
     </p>
-    <p>Posté par <%= post.author() %> le <%= post.date_publication.strftime('%d/%m/%Y') %></p>
+    <p>Posted by <%= post.author() %> le <%= post.date_publication.strftime('%d/%m/%Y') %></p>
     <p class="post_head_list"><%= post.chapeau %></p>
   </li>
   <% end %>

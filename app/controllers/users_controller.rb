@@ -20,10 +20,6 @@ class UsersController < ApplicationController
         render :edit
       end
     end
-    def destroy
-      sign_out
-      redirect_to :posts
-    end
     
     def user_attributes
        params[:user].permit(:first_name, :last_name, :email)

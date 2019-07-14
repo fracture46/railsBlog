@@ -10,7 +10,7 @@
 <body>
 <div class="log_header">
   <% if current_user != nil %>
-    Logged as <%= current_user.full_name()%>
+    Logged as <%= link_to  current_user.full_name(), [current_user] %>
     <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-danger") %>
   <% else %>
     <%= link_to('Login', new_user_session_path, class: "btn btn-primary") %>

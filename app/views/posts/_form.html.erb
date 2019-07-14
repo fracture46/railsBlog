@@ -1,7 +1,7 @@
 <%= form_for @post do |f| %>
   <div class="row">
     <div class="col-md-2">
-      Titre :
+      Title :
       <%= f.text_field :titre %>
     </div>
     <div>
@@ -19,7 +19,7 @@
       <% end%>
     </div>
     <div class="col-md-10 post_new_ta_space">
-      Chapeau :
+      Header :
       <%= f.text_area :chapeau, class: "post_form_ta" %>
     </div>
     <div>
@@ -28,7 +28,7 @@
       <% end%>
     </div>
     <div class="col-md-10 post_new_ta_space">
-      Corps :
+      Content :
       <%= f.text_area :corps, class: "post_form_ta" %>
     </div>
      <div>
