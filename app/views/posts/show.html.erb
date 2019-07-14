@@ -1,34 +1,38 @@
 <h1><%= @post.titre %></h1>
 <h2>Rédigé par <%= link_to  @post.author(), [@post.user] %> le <%= @post.date_publication.strftime('%d/%m/%Y') %> </h2>
 <% if current_user == @post.user %>
-  <div>
-    <%= link_to 'edit', [:edit, @post] %>
-    <%= link_to 'delete', @post, method: :delete, data: {confirm: "Confirmer la suppression de ce post ?"} %>
+  <div class="action_btn">
+    <%= link_to 'edit', [:edit, @post], class: "btn btn-warning" %>
+    <%= link_to 'delete', @post, method: :delete, class: "btn btn-danger", data: {confirm: "Confirmer la suppression de ce post ?"} %>
   </div>
 <% end %>
-<%= image_tag @post.image.url %>
-<p style="font-style:italic"><%= @post.chapeau %></p>
-
-<p><%= @post.corps %></p>
+<div class="post_container">
+  <p class="post_head"><%= @post.chapeau %></p>
+  <%= image_tag @post.image.url %>
+  <p class="post_content"><%= @post.corps %></p>
+</div>
 
 <% if current_user != nil %>
-  <h2>New Comment</h2>
-  Logged user : <%= current_user.full_name()%>
-  <%= render partial: '/comments/form', locals: {comment: current_user.comments.build} %>
+  <div class="insert_comment">
+    <h2>New Comment</h2>
+    <%= render partial: '/comments/form', locals: {comment: current_user.comments.build} %>
+  </div>
 <% end %>
 
 <h2>Comments</h2>
-<ul>
+<ul class="list-group space">
+  <% if @post.comments.size == 0 %>
+    <p>No comment yet.</p>
+  <% end %>
   <% @post.comments.each do |comment| %>
-  <li>
+  <li class="list-group-item">
     <%= link_to [comment.user] do %>
       <%= comment.author() %>
     <% end %>
     le <%= comment.posted_at.strftime('%d/%m/%Y') %>
-    <br/>
-    <i><%= comment.content %></i>
+    <p class="post_text"><%= comment.content %></p>
     </li>
   <% end %>
 </ul>
 
-<%= link_to 'Back to list', [:posts] %>
+<%= link_to 'Back to list', [:posts], class: "btn btn-info btn_back" %>
