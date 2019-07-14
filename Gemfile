@@ -3,6 +3,8 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'faker'
 gem 'devise'
+gem 'will_paginate', '~> 3.1.1'
+gem 'will_paginate-bootstrap' 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'

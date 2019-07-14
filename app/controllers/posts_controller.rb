@@ -3,7 +3,7 @@ class PostsController < ApplicationController
     before_action :authenticate_user!, only: [:new, :create, :update, :destory]
     
     def index
-      @posts = Post.all.order(:date_publication)
+      @posts = Post.paginate(page: params[:page], per_page: 5).order('date_publication DESC')
     end
     def new
       @post = Post.new
